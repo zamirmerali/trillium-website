@@ -565,7 +565,7 @@ a.person:hover h3 { text-decoration: underline; text-decoration-thickness: var(-
 
 /* ---------- Hero (v3) ---------- */
 .hero--v3 { padding: clamp(48px, 6vw, 96px) 0 clamp(40px, 5vw, 72px); }
-.hero--v3 .hero__text { grid-column: 1 / 8; align-self: center; padding-right: clamp(0px, 3vw, 48px); }
+.hero--v3 .hero__text { grid-column: 1 / 8; align-self: center; padding-right: clamp(0px, 2vw, 32px); }
 .hero--v3 h1 { margin-bottom: 28px; }
 .hero--v3 .lead { margin-bottom: 40px; }
 .hero--v3 .hero__figure { grid-column: 8 / 13; grid-row: auto; }
@@ -808,7 +808,22 @@ html { scroll-padding-top: calc(var(--header-h) + 76px); }
   .pager__t { font-size: 1.25rem; }
 }
 
-.hero--v3 h1 { max-width: 7.5em; text-wrap: balance; }
+.hero--v3 h1 { font-size: clamp(2.6rem, 1rem + 3.3vw, 3.9rem); letter-spacing: -.04em; }
+@media (min-width: 961px) { .hero--v3 h1 { white-space: nowrap; } }
 
 .hero--v3 .lead { margin-bottom: 24px; }
 .hero__note--proof { margin: 0 0 36px; }
+
+/* Referral section: intro left, channels right */
+.ref-desk__intro { grid-column: 1 / 6; }
+.ref-desk__intro h2 { font-size: var(--fs-display); line-height: 1; margin: 0 0 24px; }
+.ref-desk__intro > p { color: var(--on-dark-2); max-width: 30em; margin-bottom: 8px; }
+.ref-desk__intro .include { grid-template-columns: 1fr; gap: 0; margin-top: 32px; }
+.ref-desk__intro .include li { display: flex; align-items: baseline; gap: 12px; padding: 12px 0; }
+.ref-desk__intro .include li::before { margin: 0; flex: none; transform: translateY(-2px); }
+.ref-desk__channels { grid-column: 7 / 13; align-self: center; }
+.ref-desk__channels .channel { grid-template-columns: 70px 1fr auto; }
+@media (max-width: 1100px) {
+  .ref-desk__intro, .ref-desk__channels { grid-column: 1 / -1; }
+  .ref-desk__channels { margin-top: 48px; }
+}
