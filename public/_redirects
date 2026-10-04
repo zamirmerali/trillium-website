@@ -1,0 +1,6 @@
+# Old Squarespace URLs → new pages (Netlify / Cloudflare Pages format)
+/aboutus                              /our-team/                              301
+/physicians                           /referrals/                             301
+/cart                                 /                                       301
+/s/TNCPatientReferralForm_2025.docx   /files/TNCPatientReferralForm_2025.docx 301
+/careers                              /our-team/                              301
