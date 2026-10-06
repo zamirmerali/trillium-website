@@ -378,8 +378,7 @@ a.card:hover::before { display: block; }
 
 /* ---------- Team ---------- */
 .team { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 56px; }
-.person { grid-column: span 4; display: flex; flex-direction: column; text-decoration: none; color: var(--ink); }
-.person + .person { grid-column: 6 / span 4; margin-top: clamp(0px, 8vw, 120px); }
+.person { grid-column: span 3; display: flex; flex-direction: column; color: var(--ink); }
 .person .frame { margin-bottom: 24px; align-self: stretch; }
 .person .frame__img { aspect-ratio: 4 / 5; }
 .person h3 { font-family: var(--display); font-weight: 400; font-size: 2rem; line-height: 1.05; letter-spacing: -.025em; margin-bottom: 8px; }
@@ -519,7 +518,7 @@ a.person:hover h3 { text-decoration: underline; text-decoration-thickness: var(-
   .contact-grid { grid-template-columns: 1fr; }
   .contact-tile { border-left: 0; padding-left: 0; }
   .contact-tile .label { margin-bottom: 20px; }
-  .person, .person + .person { grid-column: span 6; }
+  .person { grid-column: span 6; }
   .staff > :first-child, .staff > :last-child { grid-column: 1 / -1; }
   .staff > :last-child { margin-top: 28px; }
   .page-hero--image .container { padding-right: var(--gutter); }
@@ -553,7 +552,7 @@ a.person:hover h3 { text-decoration: underline; text-decoration-thickness: var(-
   .card__num { margin-bottom: 32px; }
   .condition-grid { grid-template-columns: 1fr; }
   .condition:nth-child(n) { padding: 18px 0; border-left: 0; }
-  .person, .person + .person { grid-column: 1 / -1; margin-top: 0; }
+  .person { grid-column: span 6; }
   .footer__grid > div:nth-child(n) { grid-column: 1 / -1; margin-bottom: 36px; }
   .criteria__row { grid-template-columns: 1fr; }
   .prose__portrait { float: none; width: 100%; max-width: 360px; margin: 0 0 32px; }
@@ -827,3 +826,9 @@ html { scroll-padding-top: calc(var(--header-h) + 76px); }
   .ref-desk__intro, .ref-desk__channels { grid-column: 1 / -1; }
   .ref-desk__channels { margin-top: 48px; }
 }
+
+/* Team cards: one format for everyone */
+.person h3 { font-size: 1.5rem; font-weight: 500; letter-spacing: -.03em; }
+.person > p:not(.person__role) { margin: 0 0 16px; }
+.person .link-arrow { margin-top: auto; }
+.person__initials { display: grid; place-items: center; background: var(--stone); font-family: var(--display); font-weight: 500; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -.04em; color: var(--brand); }
