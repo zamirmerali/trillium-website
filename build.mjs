@@ -60,20 +60,37 @@ const TOUR = [
   ['/patients/', 'Patient information'], ['/preparing-for-surgery/', 'Preparing for surgery'], ['/referrals/', 'Refer a patient'],
   ['/our-team/', 'Our team'], ['/dr-zamir-merali/', 'Dr. Zamir Merali'], ['/contact/', 'Contact'],
 ];
+// Procedure guides live under the Preparing for surgery page.
+const GUIDE_ROOT = '/preparing-for-surgery/';
+const GUIDES = [
+  ['/preparing-for-surgery/microdiscectomy/', 'Microdiscectomy'], ['/preparing-for-surgery/laminectomy/', 'Laminectomy'],
+  ['/preparing-for-surgery/acdf/', 'ACDF'], ['/preparing-for-surgery/pcdf/', 'Posterior cervical fusion'],
+  ['/preparing-for-surgery/pldf/', 'Posterior lumbar fusion'], ['/preparing-for-surgery/craniotomy/', 'Craniotomy'],
+];
+const isGuide = (path) => path.startsWith(GUIDE_ROOT) && path !== GUIDE_ROOT;
 function sectionFor(path) {
+  if (isGuide(path)) path = GUIDE_ROOT;
   const owner = OWNER[path];
   return SECTIONS.find((sec) => (owner ? sec.label === owner : sec.pages.some(([p]) => p === path)));
 }
 function subnavHtml(path) {
   const sec = sectionFor(path);
   if (!sec) return '';
+  const current = isGuide(path) ? GUIDE_ROOT : path;
   const links = sec.pages.map(([p, label]) =>
-    `<li><a href="${p}"${p === path ? ' aria-current="page"' : ''}>${label}</a></li>`).join('');
+    `<li><a href="${p}"${p === current ? ' aria-current="page"' : ''}>${label}</a></li>`).join('');
   return `<nav class="subnav" aria-label="${sec.label}"><div class="container subnav__inner">` +
     `<a class="subnav__home" href="${sec.pages[0][0]}">${sec.label}</a><ul>${links}</ul></div></nav>`;
 }
 function pagerHtml(path) {
-  const i = TOUR.findIndex(([p]) => p === path);
+  // Guides page through each other, starting and ending at the Preparing for surgery hub.
+  const list = isGuide(path) ? [[GUIDE_ROOT, 'Preparing for surgery'], ...GUIDES, [GUIDE_ROOT, 'Preparing for surgery']] : TOUR;
+  const i = isGuide(path) ? list.findIndex(([p], idx) => idx > 0 && p === path) : list.findIndex(([p]) => p === path);
+  if (isGuide(path)) {
+    const prev = list[i - 1], next = list[i + 1];
+    const cell = (item, dir) => `<a class="pager__link pager__link--${dir}" href="${item[0]}"><span class="pager__k">${dir === 'prev' ? 'Previous' : 'Next'}</span><span class="pager__t">${item[1]}</span></a>`;
+    return `<nav class="pager" aria-label="Procedure guides"><div class="container pager__inner">${cell(prev, 'prev')}${cell(next, 'next')}</div></nav>`;
+  }
   if (i < 0) return '';
   const prev = TOUR[i - 1], next = TOUR[i + 1];
   const cell = (item, dir) => item

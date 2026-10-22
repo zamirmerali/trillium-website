@@ -832,3 +832,54 @@ html { scroll-padding-top: calc(var(--header-h) + 76px); }
 .person > p:not(.person__role) { margin: 0 0 16px; }
 .person .link-arrow { margin-top: auto; }
 .person__initials { display: grid; place-items: center; background: var(--stone); font-family: var(--display); font-weight: 500; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -.04em; color: var(--brand); }
+
+/* ---------- Procedure guides ---------- */
+.guide-hub { margin: 0 0 56px; padding: 28px 28px 20px; background: var(--stone); border-top: 2px solid var(--brand); }
+.guide-hub h2 { margin-top: 0 !important; padding-top: 0 !important; border-top: 0 !important; }
+.guide-groups { display: grid; gap: 24px; margin: 24px 0 16px; }
+.guide-groups__h { font: 400 var(--fs-label)/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 8px; }
+.prose .guide-list { list-style: none; padding: 0; margin: 0; border-top: var(--hair) solid var(--ink); }
+.prose .guide-list li { padding: 0; margin: 0; border-bottom: var(--hair) solid var(--line); }
+.prose .guide-list li::before { display: none; }
+.guide-list a { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; text-decoration: none; color: var(--ink); }
+.guide-list a span { font-weight: 500; }
+.guide-list a span::after { content: ' →'; color: var(--brand); }
+.guide-list a small { flex: none; font: 400 var(--fs-label)/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.guide-list a:hover span { color: var(--brand); }
+.guide-facts { margin-top: 40px; max-width: 900px; }
+.guide-facts dd { font-size: 1.125rem; }
+.guide-sec { scroll-margin-top: calc(var(--header-h) + 76px); }
+.guide-print { width: 100%; margin-top: 20px; }
+@media (max-width: 640px) {
+  .guide-hub { padding: 22px 18px 14px; }
+  .guide-list a { flex-direction: column; gap: 4px; }
+  .guide-facts { grid-template-columns: 1fr 1fr; }
+  .guide-facts > div:nth-child(n) { border-left: 0; padding-left: 0; border-top: var(--hair) solid var(--line); }
+}
+
+/* ---------- Print (procedure guides and other pages) ---------- */
+.print-only { display: none; }
+@media print {
+  .topbar, .header, .subnav, .aside, .pager, .footer, .cta-band, .page-hero__hex, .page-hero__media, .guides, .guide-hub, .skip { display: none !important; }
+  html, body { background: #fff !important; }
+  .print-only { display: block; }
+  .print-brand { font: 400 8pt/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #000; padding-bottom: 8pt; margin: 0 0 14pt; border-bottom: .5pt solid #000; }
+  body { font-size: 11pt; color: #000; }
+  .page-hero { padding: 0 0 12pt; border: 0; }
+  .crumbs, .eyebrow { display: none; }
+  .page-hero h1 { font-size: 22pt; margin-bottom: 6pt; }
+  .page-hero .lead { font-size: 11pt; color: #000; }
+  .guide-facts { margin-top: 10pt; }
+  .guide-facts dd { font-size: 11pt; }
+  .section { padding: 0; }
+  .article > .prose { grid-column: 1 / -1; max-width: none; }
+  .prose h2 { font-size: 14pt; margin-top: 14pt; padding-top: 6pt; break-after: avoid; }
+  .prose h3 { break-after: avoid; }
+  .prose p, .prose li { color: #000; }
+  .callout { background: none; border-left: 2px solid #000; }
+  .guide-sec { break-inside: auto; }
+  a { color: #000; text-decoration: none; }
+}
+@media (max-width: 640px) {
+  .page-hero h1 { font-size: clamp(2.1rem, 9.5vw, 3rem); overflow-wrap: break-word; }
+}
