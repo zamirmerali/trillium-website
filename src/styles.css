@@ -883,3 +883,6 @@ html { scroll-padding-top: calc(var(--header-h) + 76px); }
 @media (max-width: 640px) {
   .page-hero h1 { font-size: clamp(2.1rem, 9.5vw, 3rem); overflow-wrap: break-word; }
 }
+
+.guide-credit { margin: 40px 0 0; padding-top: 14px; border-top: var(--hair) solid var(--line); font: 400 var(--fs-label)/1.5 var(--mono) !important; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3) !important; }
+.guide-hub .guide-credit { margin-top: 16px; }
