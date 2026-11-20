@@ -45,18 +45,17 @@ cpSync(join(root, 'public'), out, { recursive: true });
 const SECTIONS = [
   { label: 'Our care', pages: [
     ['/services/', 'Overview'], ['/spine-surgery/', 'Spine surgery'], ['/brain-tumours/', 'Neuro-oncology'],
-    ['/cerebrovascular/', 'Cerebrovascular'], ['/rapid-access/', 'Rapid Access Clinic'], ['/conditions/', 'Conditions we treat'] ] },
+    ['/cerebrovascular/', 'Cerebrovascular'], ['/conditions/', 'Conditions we treat'] ] },
   { label: 'Patients', pages: [
     ['/patients/', 'Patient information'], ['/preparing-for-surgery/', 'Preparing for surgery'], ['/conditions/', 'Conditions we treat'] ] },
-  { label: 'Referrals', pages: [['/referrals/', 'Refer a patient'], ['/rapid-access/', 'Rapid Access criteria']] },
   { label: 'About', pages: [['/our-team/', 'Our team'], ['/dr-zamir-merali/', 'Dr. Zamir Merali'], ['/dr-jeffrey-zuccato/', 'Dr. Jeffrey Zuccato']] },
 ];
 // Owner section for pages listed in more than one section.
-const OWNER = { '/conditions/': 'Our care', '/rapid-access/': 'Our care' };
+const OWNER = { '/conditions/': 'Our care' };
 // A single reading order through the site, used for the previous/next pager.
 const TOUR = [
   ['/services/', 'Our care'], ['/spine-surgery/', 'Spine surgery'], ['/brain-tumours/', 'Neuro-oncology'],
-  ['/cerebrovascular/', 'Cerebrovascular'], ['/rapid-access/', 'Rapid Access Clinic'], ['/conditions/', 'Conditions we treat'],
+  ['/cerebrovascular/', 'Cerebrovascular'], ['/conditions/', 'Conditions we treat'],
   ['/patients/', 'Patient information'], ['/preparing-for-surgery/', 'Preparing for surgery'], ['/referrals/', 'Refer a patient'],
   ['/our-team/', 'Our team'], ['/dr-zamir-merali/', 'Dr. Zamir Merali'], ['/dr-jeffrey-zuccato/', 'Dr. Jeffrey Zuccato'], ['/contact/', 'Contact'],
 ];
